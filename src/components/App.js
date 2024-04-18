@@ -1,28 +1,24 @@
 import React, {useEffect, useState} from "react";
 
 function App(){
-    const [images, setImages] = useState([]);
+    const [image, setImage] = useState("");
     
     useEffect(() => {
     fetch("https://dog.ceo/api/breeds/image/random")
     .then((res) => res.json())
     .then ((data) => {
-        setImages(data.message);
-      
+        setImage(data.message);
     })
-    
     }, []);
-    console.log(images)
-
-    if (!images) {
+    console.log(image);
+    if (!image) {
             return <p>Loading...</p>
     }
 
     return(
 
         <>
-            <h2>Title</h2>
-            <img src={images} alt="A Random Dog" ></img>
+            <img src={image} alt="A Random Dog" ></img>
         </>
     )
 
